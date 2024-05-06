@@ -1,0 +1,63 @@
+
+This is previous work on the add(int index, E obj) method
+
+/* 
+	 * ListNode<E> toAdd = new ListNode<E>(obj);
+			ListNode<E> temp = head;
+			
+			if (index == 0) {
+				head = toAdd;
+			}
+			
+			// a way of thinking of this is: for each loop, 
+			// the node referenced by temp has the same index in the 
+			// list as the value of i
+			int i = 1;
+			while (i < index) {
+				temp = temp.getNext();
+				i++;
+			}
+			
+			temp.setNext(toAdd);
+			temp = temp.getNext();
+			toAdd.setNext(temp);
+			
+			// if the index is 0, then the head should become the 
+			// node being added. The next node stored by toAdd is the 
+			// old head, which should be stored in the temporary 
+			// variable used for all values of index
+			
+			// if the index is a where a is not 0, then the 
+			// then the node at a - 1 is hooked to the node toAdd, and
+			// toAdd is hooked to the node at a. 
+	*/
+	
+	// the above code is wrong in a lot of ways. New code is better
+	// also needs to make sure the index is not less than 0 and not 
+	// too large, and I want to use an elegant way to do it. 
+	
+	/*
+	 * try {
+			ListNode<E> toAdd = new ListNode<E>(obj);
+			ListNode<E> prev = null;
+			ListNode<E> next = null;
+			ListNode<E> temp = head;
+			
+			if (index == 0) {
+				head = toAdd;
+			}
+			
+			for (int i = 1; i < index; i++) {
+				temp = temp.getNext();
+			}
+			
+			prev = temp;
+			next = prev.getNext();
+			prev.setNext(toAdd);
+			toAdd.setNext(next);
+			
+			
+		} catch (OutOfMemoryError e) {
+			return false;
+		}
+	 */
